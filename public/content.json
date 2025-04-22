@@ -1,0 +1,65 @@
+{
+    "HTML": {
+            "topics": [
+              "Introduction",
+              "HTML Tags",
+              "Forms",
+              "Attributes",
+              "Semantic Elements",
+              "Media Elements",
+              "Tables",
+              "Lists",
+              "Links",
+              "Head and Metadata",
+              "Block vs Inline Elements",
+              "HTML Entities",
+              "Iframes",
+              "Comments",
+              "Doctype",
+              "HTML5 APIs"
+            ],
+            "content": {
+             "Introduction": "HTML stands for HyperText Markup Language. It is the standard language used to create and structure content on the web. HTML provides the basic structure of web pages, which is then enhanced and styled using CSS and made interactive with JavaScript. HyperText refers to links that connect web pages. Markup Language means it uses tags to define elements within a document. HTML files have a .html extension and are interpreted by web browsers. HTML is not a programming language — it is a markup language. HTML forms the foundation of every website on the internet.",
+              "HTML Tags": "HTML uses tags like <p>, <a>, <div>, <img>, <h1> to structure content. Tags can be paired (with opening and closing) or self-closing like <br/>.",
+              "Forms": "HTML forms collect user input. Elements include <form>, <input>, <textarea>, <button>, <select>, and <label>.",
+              "Attributes": "HTML attributes provide extra information about elements. Common attributes include id, class, src, href, alt, title, style, and data-*.",
+              "Semantic Elements": "Elements like <header>, <footer>, <main>, <article>, <section>, <aside>, and <nav> give meaning to the structure of a web page.",
+              "Media Elements": "Use <img> for images, <audio> and <video> for multimedia content. Attributes like controls, autoplay, and source elements are often used.",
+              "Tables": "Tables use <table>, <thead>, <tbody>, <tr>, <td>, and <th> to display tabular data.",
+              "Lists": "HTML supports ordered (<ol>) and unordered (<ul>) lists with <li> items. There’s also <dl> for description lists.",
+              "Links": "<a href='URL'>Link Text</a> creates a hyperlink. The href attribute defines the link destination. You can also add target='_blank' to open links in a new tab.",
+              "Head and Metadata": "The <head> contains metadata like <title>, <meta>, <link>, <style>, and <script>. These don't render content directly but control document behavior.",
+              "Block vs Inline Elements": "Block elements (e.g., <div>, <p>, <h1>) start on a new line. Inline elements (e.g., <span>, <a>, <img>) do not break the flow of text.",
+              "HTML Entities": "Entities are used to display reserved characters like &lt;, &gt;, &amp;, &nbsp;. They begin with & and end with ;",
+              "Iframes": "<iframe> embeds another HTML page inside the current page. Useful for videos, maps, and cross-domain content.",
+              "Comments": "HTML comments use <!-- comment here --> and are ignored by the browser.",
+              "Doctype": "<!DOCTYPE html> tells the browser to use HTML5. It's placed at the very top of the document.",
+              "HTML5 APIs": "HTML5 introduced powerful APIs like Geolocation, Web Storage (localStorage/sessionStorage), Canvas, Drag and Drop, and Web Workers."
+            }          
+    },
+    "CSS": {
+      "topics": ["Introduction", "Selectors", "Box Model", "Flexbox", "Grid", "Positioning", "Media Queries"],
+      "content": {
+        "Introduction": "CSS (Cascading Style Sheets) styles HTML elements. It controls layout, color, fonts, and more.",
+        "Selectors": "Selectors target elements. Types: element, class (.class), id (#id), group, descendant, pseudo.",
+        "Box Model": "Every element is a box: content, padding, border, margin. Understanding it is key for layout.",
+        "Flexbox": "Flexbox is a one-dimensional layout system useful for aligning items in rows or columns.",
+        "Grid": "CSS Grid provides a two-dimensional layout system, using rows and columns.",
+        "Positioning": "Static, relative, absolute, fixed, sticky. Controls element flow and placement.",
+        "Media Queries": "Media queries allow responsive design by applying styles based on screen size."
+      }
+    },
+    "JavaScript": {
+      "topics": ["Introduction", "Variables", "Functions", "DOM Manipulation", "Events", "ES6 Features", "Async/Await"],
+      "content": {
+        "Introduction": "JavaScript is a scripting language that enables dynamic behavior on web pages.",
+        "Variables": "Use let, const, and var to declare variables. Prefer const/let for modern code.",
+        "Functions": "Functions define reusable blocks of code. Use function declarations or arrow functions.",
+        "DOM Manipulation": "Use document.querySelector(), innerHTML, createElement() to change HTML content dynamically.",
+        "Events": "Respond to user interactions using addEventListener(). Events include click, submit, change, etc.",
+        "ES6 Features": "ES6 introduced let/const, arrow functions, classes, destructuring, spread/rest, and modules.",
+        "Async/Await": "Async/await makes asynchronous code look synchronous. Use it with promises and fetch API."
+      }
+    }
+  }
+  
