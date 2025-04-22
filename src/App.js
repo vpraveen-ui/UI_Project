@@ -1,54 +1,66 @@
-import './App.css';
-import { useReducer, useState } from 'react';
+import { useEffect, useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import SubSidebar from "./components/SubSidebar";
+import Content from "./components/Content";
 
-// Reducer function to handle state changes
-function reducer(state, action) {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return [...state, action.payload];
-    case 'DELETE_TODO':
-      return state.filter((_, index) => index !== action.payload);
-    default:
-      return state;
-  }
-}
+const App = () => {
+  const [data, setData] = useState({});
+  const [selectedTech, setSelectedTech] = useState(null);
+  const [selectedTopic, setSelectedTopic] = useState(null);
+  const [showSidebar, setShowSidebar] = useState(false);
 
-function App() {
-  const [todo, setTodo] = useState('');
-  const [todoList, dispatch] = useReducer(reducer, []);
+  const navigate = useNavigate();
 
-  const handleClick = () => {
-    if (todo.trim()) {
-      dispatch({ type: 'ADD_TODO', payload: todo });
-      setTodo(''); // clear input after adding
-    }
-  };
+  useEffect(() => {
+    fetch("/content.json")
+      .then((res) => res.json())
+      .then((json) => {
+        setData(json);
+        const firstTech = Object.keys(json)[0];
+        setSelectedTech(firstTech);
+      });
+  }, []);
 
-  const deleteTodo = (index) => {
-    dispatch({ type: 'DELETE_TODO', payload: index });
+  const handleTechClick = (tech) => {
+    setSelectedTech(tech);
+    setSelectedTopic(null);
+    navigate(`/${tech.toLowerCase().replace(" ", "")}`);
   };
 
   return (
-    <div className="App">
-      <input
-        type="text"
-        value={todo}
-        onChange={(e) => setTodo(e.target.value)}
+    <div className="flex font-sans min-h-screen">
+      {/* Html, CSS, Javascript, React */}
+      <Sidebar
+        data={data}
+        selectedTech={selectedTech}
+        handleTechClick={handleTechClick}
       />
-      <button onClick={handleClick}>Add</button>
 
-      <ul style={{ padding: 0 }}>
-        {todoList.map((val, index) => (
-          <div key={index}>
-            <span>{val}</span>
-            <button style={{ marginLeft: '10px' }} onClick={() => deleteTodo(index)}>
-              Delete
-            </button>
-          </div>
-        ))}
-      </ul>
+      {/* Sub Sidebar */}
+      <SubSidebar
+        data={data}
+        selectedTech={selectedTech}
+        selectedTopic={selectedTopic}
+        setSelectedTopic={setSelectedTopic}
+      />
+
+      {/* Content Area */}
+      <Routes>
+        <Route
+          path="/:tech"
+          element={
+            <Content
+              selectedTech={selectedTech}
+              selectedTopic={selectedTopic}
+              data={data}
+            />
+          }
+        />
+        <Route path="*" element={<div className="p-6">Choose a topic</div>} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
