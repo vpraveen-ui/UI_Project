@@ -1,23 +1,52 @@
-import logo from './logo.svg';
 import './App.css';
+import { useReducer, useState } from 'react';
+
+// Reducer function to handle state changes
+function reducer(state, action) {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [...state, action.payload];
+    case 'DELETE_TODO':
+      return state.filter((_, index) => index !== action.payload);
+    default:
+      return state;
+  }
+}
 
 function App() {
+  const [todo, setTodo] = useState('');
+  const [todoList, dispatch] = useReducer(reducer, []);
+
+  const handleClick = () => {
+    if (todo.trim()) {
+      dispatch({ type: 'ADD_TODO', payload: todo });
+      setTodo(''); // clear input after adding
+    }
+  };
+
+  const deleteTodo = (index) => {
+    dispatch({ type: 'DELETE_TODO', payload: index });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input
+        type="text"
+        value={todo}
+        onChange={(e) => setTodo(e.target.value)}
+      />
+      <button onClick={handleClick}>Add</button>
+
+      <ul style={{ padding: 0 }}>
+        {todoList.map((val, index) => (
+          <div key={index}>
+            <span>{val}</span>
+            <button style={{ marginLeft: '10px' }} onClick={() => deleteTodo(index)}>
+              Delete
+            </button>
+          </div>
+        ))}
+      </ul>
     </div>
   );
 }
