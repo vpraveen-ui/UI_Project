@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+
 import Sidebar from "./components/Sidebar";
-import SubSidebar from "./components/SubSidebar";
 import Content from "./components/Content";
+import Header from "./components/Header";
+import './index.css'
 
 const App = () => {
   const [data, setData] = useState({});
   const [selectedTech, setSelectedTech] = useState(null);
   const [selectedTopic, setSelectedTopic] = useState(null);
-  const [showSidebar, setShowSidebar] = useState(false);
+  // const [showSidebar, setShowSidebar] = useState(false);
 
   const navigate = useNavigate();
 
@@ -29,21 +31,23 @@ const App = () => {
   };
 
   return (
-    <div className="flex font-sans min-h-screen">
+    <div className="flex font-sans">
       {/* Html, CSS, Javascript, React */}
-      <Sidebar
+      <Header
         data={data}
         selectedTech={selectedTech}
         handleTechClick={handleTechClick}
       />
 
-      {/* Sub Sidebar */}
-      <SubSidebar
+      {/* Sidebar */}
+
+      <Sidebar
         data={data}
         selectedTech={selectedTech}
         selectedTopic={selectedTopic}
         setSelectedTopic={setSelectedTopic}
       />
+
 
       {/* Content Area */}
       <Routes>
