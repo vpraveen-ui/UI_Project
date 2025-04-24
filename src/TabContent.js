@@ -11,4 +11,4 @@ const TabContent = ({ currentTab }) => {
     }
   };
 
-  export default TabContent
+  export default TabContent;

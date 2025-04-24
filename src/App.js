@@ -24,41 +24,25 @@ const App = () => {
 
   const handleTechClick = (tech) => {
     setSelectedTech(tech);
-    setSelectedTopic(null);
+    const firstTopic = data[tech]?.topics?.[0];
+    setSelectedTopic(firstTopic || null);
     navigate(`/${tech.toLowerCase().replace(" ", "")}`);
   };
 
-  return (
-    <div className="flex font-sans min-h-screen">
-      {/* Html, CSS, Javascript, React */}
-      <Sidebar
-        data={data}
-        selectedTech={selectedTech}
-        handleTechClick={handleTechClick}
-      />
 
-      {/* Sub Sidebar */}
+  return (
+    <div className="flex flex-1">
       <SubSidebar
         data={data}
         selectedTech={selectedTech}
         selectedTopic={selectedTopic}
         setSelectedTopic={setSelectedTopic}
       />
-
-      {/* Content Area */}
-      <Routes>
-        <Route
-          path="/:tech"
-          element={
-            <Content
-              selectedTech={selectedTech}
-              selectedTopic={selectedTopic}
-              data={data}
-            />
-          }
-        />
-        <Route path="*" element={<div className="p-6">Choose a topic</div>} />
-      </Routes>
+      <Content
+        selectedTech={selectedTech}
+        selectedTopic={selectedTopic}
+        data={data}
+      />
     </div>
   );
 };
