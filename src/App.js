@@ -20,15 +20,23 @@ const App = () => {
       .then((json) => {
         setData(json);
         const firstTech = Object.keys(json)[0];
+        const firstTopic = json[firstTech]?.topics?.[0] || null;
         setSelectedTech(firstTech);
+        setSelectedTopic(firstTopic);
+        if (firstTech) {
+          navigate(`/${firstTech.toLowerCase().replace(/\s+/g, "")}`);
+        }
       });
   }, []);
+  
 
   const handleTechClick = (tech) => {
     setSelectedTech(tech);
-    setSelectedTopic(null);
+    const firstTopic = data[tech]?.topics?.[0];
+    setSelectedTopic(firstTopic || null);
     navigate(`/${tech.toLowerCase().replace(" ", "")}`);
   };
+
 
   return (
     <div className="flex font-sans">
