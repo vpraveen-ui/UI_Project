@@ -47,16 +47,16 @@
 
 @media (max-width: 768px) {
   .sidebar {
-    position: static;
-    width: 100%;
-    height: auto;
+    position: relative;
+    width: 150px;
+    height: 100%;
     padding: 1rem;
   }
 }
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .sidebar .sidebar-item {
     font-size: 0.9rem;
     padding: 0.4rem;
   }
-}
+} */
